@@ -61,8 +61,30 @@ async function fetchDatabase(boundingBox, box) {
                 }
             ]
         };
-        let queryResult = await dbCollection.find(query, { _id: 1 }).limit(1000).toArray();
+        const geoQuery = {
+            location: { $geoWithin: { $polygon:  [ 
+                [ -74.02823925018312, 40.73610423919209 ],
+  [ -73.95957469940187, 40.73610423919209 ],
+  [ -73.95957469940187, 40.7640963068463 ],
+  [ -74.02823925018312, 40.7640963068463 ]
+            ] } }}
 
+            // const geoQuery = {
+            //      location : { $near : [ -73.9667, 40.78 ], $maxDistance: 0.10 } 
+            // }
+         console.log([ 
+            [box.bounds._southWest.lng, box.bounds._southWest.lat],
+            [box.bounds._northEast.lng, box.bounds._southWest.lat],
+            [box.bounds._northEast.lng, box.bounds._northEast.lat],
+            [box.bounds._southWest.lng, box.bounds._northEast.lat],
+            [box.bounds._southWest.lng, box.bounds._southWest.lat]
+
+        ])
+        dbCollection.createIndex({"location":"2dsphere"});
+        // let queryResult = await dbCollection.find(query, { _id: 1 }).limit(1000).toArray();
+        let queryResult = await dbCollection.find(geoQuery, { location: "2dsphere" }).limit(1000).toArray();
+         console.log(queryResult);
+         dbCollection.dropIndexes(); 
 
         let data = queryResult.map(d => {
             return {
@@ -84,13 +106,6 @@ async function fetchDatabase(boundingBox, box) {
 
         let clusterMarkers = index.getClusters(bbox, box.zoomLevel);
 
-        let dataArray = [];
-        for (let key in queryResult) {
-            dataArray.push({
-                lng: queryResult[key].pickup_longitude,
-                lat: queryResult[key].pickup_latitude
-            })
-        }
         return clusterMarkers;
     }
     catch (err) { console.log(err); }
