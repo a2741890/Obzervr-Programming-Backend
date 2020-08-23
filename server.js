@@ -35,7 +35,7 @@ async function fetchDatabase(boundingBox, box) {
     let client, db;
     const databaseURL = 'mongodb://127.0.0.1:27017/?gssapiServiceName=mongodb';
     const database = 'Task';
-    const collection = 'taxi_data2';
+    const collection = 'taxi_data_new';
 
     try {
         client = await MongoClient.connect(databaseURL, {
@@ -61,39 +61,35 @@ async function fetchDatabase(boundingBox, box) {
                 }
             ]
         };
-        const geoQuery = {
-            location: { $geoWithin: { $polygon:  [ 
-                [ -74.02823925018312, 40.73610423919209 ],
-  [ -73.95957469940187, 40.73610423919209 ],
-  [ -73.95957469940187, 40.7640963068463 ],
-  [ -74.02823925018312, 40.7640963068463 ]
-            ] } }}
+//         const geoQuery = {
+//             loc: { $geoWithin: { $polygon:  [ 
+//                 [ -74.02823925018312, 40.73610423919209 ],
+//   [ -73.95957469940187, 40.73610423919209 ],
+//   [ -73.95957469940187, 40.7640963068463 ],
+//   [ -74.02823925018312, 40.7640963068463 ]
+//             ] } }}
 
-            // const geoQuery = {
-            //      location : { $near : [ -73.9667, 40.78 ], $maxDistance: 0.10 } 
-            // }
-         console.log([ 
-            [box.bounds._southWest.lng, box.bounds._southWest.lat],
-            [box.bounds._northEast.lng, box.bounds._southWest.lat],
-            [box.bounds._northEast.lng, box.bounds._northEast.lat],
-            [box.bounds._southWest.lng, box.bounds._northEast.lat],
-            [box.bounds._southWest.lng, box.bounds._southWest.lat]
+const geoQuery = {
+    loc: { $geoWithin: { $box:  [ 
+        [box.bounds._southWest.lng, box.bounds._southWest.lat],
+        [box.bounds._northEast.lng, box.bounds._northEast.lat]
+    ] } }};
 
-        ])
-        dbCollection.createIndex({"location":"2dsphere"});
-        // let queryResult = await dbCollection.find(query, { _id: 1 }).limit(1000).toArray();
-        let queryResult = await dbCollection.find(geoQuery, { location: "2dsphere" }).limit(1000).toArray();
-         console.log(queryResult);
-         dbCollection.dropIndexes(); 
+    // console.log(box.bounds._southWest + ',' + box.bounds._northEast);
 
-        let data = queryResult.map(d => {
+        dbCollection.createIndex({loc:"2dsphere"});
+        let queryResult = await dbCollection.find(geoQuery).toArray();
+         console.log(queryResult.length);
+        //  dbCollection.dropIndexes(); 
+
+        let geoData = queryResult.map(d => {
             return {
                 lng: d.pickup_longitude,
                 lat: d.pickup_latitude
             }
         });
 
-        let geoJSONData = GeoJSON.parse(data, { Point: ['lat', 'lng'] });
+        let geoJSONData = GeoJSON.parse(geoData, { Point: ['lat', 'lng'] });
 
         const index = new Supercluster({
             radius: 100,
