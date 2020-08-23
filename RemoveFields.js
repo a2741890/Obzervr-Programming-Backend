@@ -16,12 +16,14 @@ async function fetchDatabase() {
         let dbCollection = db.collection(collection);
 
         var ops = [];
+
+        //No longer need lon and lat columns
         await dbCollection.find().forEach(async function (x) {
             ops.push({
                 "updateOne": {
                     "filter": { "_id": x._id },
                     "update": {
-                        "$set": { "loc": [x.pickup_longitude, x.pickup_latitude] }
+                        "$unset": { pickup_longitude:"", pickup_latitude:"" }
                     }
                 }
             });

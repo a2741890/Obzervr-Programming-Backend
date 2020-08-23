@@ -78,14 +78,13 @@ const geoQuery = {
     // console.log(box.bounds._southWest + ',' + box.bounds._northEast);
 
         dbCollection.createIndex({loc:"2dsphere"});
-        let queryResult = await dbCollection.find(geoQuery).toArray();
+        let queryResult = await dbCollection.find(geoQuery, {loc:1}).hint("loc_2dsphere").toArray();
          console.log(queryResult.length);
-        //  dbCollection.dropIndexes(); 
 
         let geoData = queryResult.map(d => {
             return {
-                lng: d.pickup_longitude,
-                lat: d.pickup_latitude
+                lng: d.loc[0],
+                lat: d.loc[1]
             }
         });
 

@@ -8,23 +8,28 @@ async function fetchDatabase() {
   const collection = 'taxi_data_new';
 
   try {
-      client = await MongoClient.connect(databaseURL, {
-          useUnifiedTopology: true,
-          useNewUrlParser: true
-      });
-      db = client.db(database);
-      let dbCollection = db.collection(collection);
+    client = await MongoClient.connect(databaseURL, {
+      useUnifiedTopology: true,
+      useNewUrlParser: true
+    });
+    db = client.db(database);
+    let dbCollection = db.collection(collection);
 
-      const geoQuery = {
-        loc: { $geoWithin: { $box:  [ 
-          [ -73.02823925018312, 40.73610423919209 ],
-          [ -74.95957469940187, 40.7640963068463 ]
-          ] } }}
+    const geoQuery = {
+      loc: {
+        $geoWithin: {
+          $box: [
+            [-73.02823925018312, 40.73610423919209],
+            [-74.95957469940187, 40.7640963068463]
+          ]
+        }
+      }
+    }
 
-      // dbCollection.createIndex({loc:"2dsphere"});
-      let queryResult = await dbCollection.find(geoQuery).limit(10000000).toArray();
-       console.log(queryResult.length);
-      // dbCollection.dropIndexes(); 
+    dbCollection.createIndex({ loc: "2dsphere" });
+    let queryResult = await dbCollection.find(geoQuery, {loc:1}).hint("loc_2dsphere").toArray();
+    console.log(queryResult.length);
+    // dbCollection.dropIndexes(); 
 
 
   }

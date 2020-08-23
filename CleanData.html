@@ -13076,7 +13076,7 @@ div#notebook {
 
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[1]:</div>
+<div class="prompt input_prompt">In&nbsp;[71]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -13093,18 +13093,6 @@ div#notebook {
 <div class="output_wrapper">
 <div class="output">
 
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stderr output_text">
-<pre>C:\Users\TechFast Australia\anaconda3\lib\site-packages\IPython\core\interactiveshell.py:3071: DtypeWarning: Columns (17) have mixed types.Specify dtype option on import or set low_memory=False.
-  has_raised = await self.run_ast_nodes(code_ast.body, cell_name,
-</pre>
-</div>
-</div>
 
 <div class="output_area">
 
@@ -13148,7 +13136,7 @@ memory usage: 1.8+ GB
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="prompt input_prompt">In&nbsp;[72]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Pick necessary columns, drop the rest</span>
@@ -13197,15 +13185,15 @@ memory usage: 875.4+ MB
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[3]:</div>
+<div class="prompt input_prompt">In&nbsp;[73]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">df2_headers</span> <span class="o">=</span> <span class="n">df2</span><span class="o">.</span><span class="n">dtypes</span><span class="o">.</span><span class="n">index</span>
 <span class="c1">##Check the unique value to briefly see if there&#39;s noise in the data</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">df2_headers</span><span class="p">:</span>
     <span class="c1">##Change the blank between characters into underline &quot;_&quot;</span>
-   <span class="nb">print</span><span class="p">(</span> <span class="n">i</span><span class="p">,</span> <span class="s2">&quot;:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;</span><span class="si">{0}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">)]</span><span class="o">.</span><span class="n">unique</span><span class="p">())</span>
-   <span class="nb">print</span><span class="p">(</span> <span class="n">i</span><span class="p">,</span> <span class="s2">&quot;:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;</span><span class="si">{0}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">)]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(),</span><span class="s2">&quot;</span><span class="se">\n\n</span><span class="s2">&quot;</span><span class="p">)</span>
+   <span class="nb">print</span><span class="p">(</span> <span class="n">i</span><span class="p">,</span> <span class="s2">&quot;:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">df2</span><span class="p">[</span><span class="s2">&quot;</span><span class="si">{0}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">)]</span><span class="o">.</span><span class="n">unique</span><span class="p">())</span>
+   <span class="nb">print</span><span class="p">(</span> <span class="n">i</span><span class="p">,</span> <span class="s2">&quot;:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">df2</span><span class="p">[</span><span class="s2">&quot;</span><span class="si">{0}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">)]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(),</span><span class="s2">&quot;</span><span class="se">\n\n</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -13232,11 +13220,11 @@ tpep_pickup_datetime :
 2015-01-14 16:13:52    32
 2015-01-14 13:20:13    29
                        ..
-2015-01-29 03:44:39     1
-2015-01-13 05:33:46     1
-2015-01-15 07:05:48     1
-2015-01-19 05:01:57     1
-2015-01-27 19:13:47     1
+2015-01-30 03:22:29     1
+2015-01-26 20:35:16     1
+2015-01-22 06:10:06     1
+2015-01-09 07:05:00     1
+2015-01-29 04:18:25     1
 Name: tpep_pickup_datetime, Length: 2438284, dtype: int64 
 
 
@@ -13250,11 +13238,11 @@ tpep_dropoff_datetime :
 2015-01-03 00:00:00    129
 2015-01-11 00:00:00    119
                       ... 
-2015-01-12 09:52:10      1
-2015-01-07 00:34:59      1
-2015-01-24 06:30:14      1
-2015-01-31 07:56:43      1
-2015-01-22 02:26:04      1
+2015-01-06 03:06:05      1
+2015-01-22 00:35:32      1
+2015-01-21 05:26:44      1
+2015-01-29 00:22:25      1
+2015-01-02 03:56:55      1
 Name: tpep_dropoff_datetime, Length: 2442163, dtype: int64 
 
 
@@ -13391,14 +13379,245 @@ Name: total_amount, Length: 11969, dtype: int64
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>According to the output, data is clean. No empty value or inappropriate value(e.q. non word characters)</p>
+<p>According to the output, data is clean. No empty value.
+Remove points not in New York City.</p>
+<p>New York City Borough Boundary Metadata
+West -74.257159 East -73.699215
+North 40.915568 South 40.495992</p>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="prompt input_prompt">In&nbsp;[74]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">##Remove invalid locations</span>
+
+<span class="n">df2</span> <span class="o">=</span> <span class="n">df2</span><span class="p">[</span><span class="n">df2</span><span class="p">[</span><span class="s1">&#39;pickup_longitude&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">between</span><span class="p">(</span><span class="o">-</span><span class="mf">74.257159</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.699215</span><span class="p">)]</span>
+<span class="n">df2</span> <span class="o">=</span> <span class="n">df2</span><span class="p">[</span><span class="n">df2</span><span class="p">[</span><span class="s1">&#39;pickup_latitude&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">between</span><span class="p">(</span><span class="mf">40.495992</span><span class="p">,</span><span class="mf">40.915568</span><span class="p">)]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[75]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">##Check again</span>
+<span class="n">df2</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+<span class="n">df2_headers</span> <span class="o">=</span> <span class="n">df2</span><span class="o">.</span><span class="n">dtypes</span><span class="o">.</span><span class="n">index</span>
+<span class="c1">##Check the unique value to briefly see if there&#39;s noise in the data</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">df2_headers</span><span class="p">:</span>
+    <span class="c1">##Change the blank between characters into underline &quot;_&quot;</span>
+   <span class="nb">print</span><span class="p">(</span> <span class="n">i</span><span class="p">,</span> <span class="s2">&quot;:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">df2</span><span class="p">[</span><span class="s2">&quot;</span><span class="si">{0}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">)]</span><span class="o">.</span><span class="n">unique</span><span class="p">())</span>
+   <span class="nb">print</span><span class="p">(</span> <span class="n">i</span><span class="p">,</span> <span class="s2">&quot;:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">df2</span><span class="p">[</span><span class="s2">&quot;</span><span class="si">{0}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">)]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(),</span><span class="s2">&quot;</span><span class="se">\n\n</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+Int64Index: 12503257 entries, 0 to 12748985
+Data columns (total 9 columns):
+ #   Column                 Dtype  
+---  ------                 -----  
+ 0   tpep_pickup_datetime   object 
+ 1   tpep_dropoff_datetime  object 
+ 2   passenger_count        int64  
+ 3   trip_distance          float64
+ 4   pickup_longitude       float64
+ 5   pickup_latitude        float64
+ 6   dropoff_longitude      float64
+ 7   dropoff_latitude       float64
+ 8   total_amount           float64
+dtypes: float64(6), int64(1), object(2)
+memory usage: 953.9+ MB
+tpep_pickup_datetime :
+ [&#39;2015-01-15 19:05:39&#39; &#39;2015-01-10 20:33:38&#39; &#39;2015-01-10 20:33:39&#39; ...
+ &#39;2015-01-10 18:16:49&#39; &#39;2015-01-26 06:45:05&#39; &#39;2015-01-09 15:04:28&#39;]
+tpep_pickup_datetime :
+ 2015-01-24 15:15:44    28
+2015-01-31 19:47:55    26
+2015-01-23 15:15:14    25
+2015-01-30 20:46:03    23
+2015-01-08 20:24:24    23
+                       ..
+2015-01-26 03:35:20     1
+2015-01-12 06:03:04     1
+2015-01-28 01:51:59     1
+2015-01-26 22:21:12     1
+2015-01-30 04:05:47     1
+Name: tpep_pickup_datetime, Length: 2432188, dtype: int64 
+
+
+tpep_dropoff_datetime :
+ [&#39;2015-01-15 19:23:42&#39; &#39;2015-01-10 20:53:28&#39; &#39;2015-01-10 20:43:41&#39; ...
+ &#39;2015-01-10 06:38:03&#39; &#39;2015-01-10 06:17:46&#39; &#39;2015-01-26 10:32:57&#39;]
+tpep_dropoff_datetime :
+ 2015-01-02 00:00:00    142
+2015-02-01 00:00:00    132
+2015-01-04 00:00:00    131
+2015-01-03 00:00:00    127
+2015-01-18 00:00:00    118
+                      ... 
+2015-01-20 02:57:11      1
+2015-01-13 05:30:14      1
+2015-01-05 01:28:05      1
+2015-01-24 04:30:56      1
+2015-01-24 08:32:59      1
+Name: tpep_dropoff_datetime, Length: 2436089, dtype: int64 
+
+
+passenger_count :
+ [1 3 2 5 6 4 0 9 8 7]
+passenger_count :
+ 1    8803511
+2    1781114
+5     692440
+3     519842
+6     451189
+4     248932
+0       6205
+9          9
+8          8
+7          7
+Name: passenger_count, dtype: int64 
+
+
+trip_distance :
+ [  1.59   3.3    1.8  ...  55.36 214.3   35.65]
+trip_distance :
+ 0.90     295691
+0.80     292740
+1.00     290136
+1.10     277670
+0.70     277372
+          ...  
+41.53         1
+55.40         1
+36.65         1
+95.70         1
+34.54         1
+Name: trip_distance, Length: 4339, dtype: int64 
+
+
+pickup_longitude :
+ [-73.99389648 -74.00164795 -73.96334076 ... -73.76560211 -74.05173492
+ -73.81429291]
+pickup_longitude :
+ -73.982224    4793
+-73.982239    4769
+-73.982079    4752
+-73.982117    4655
+-73.982208    4591
+              ... 
+-74.019707       1
+-74.019569       1
+-74.019897       1
+-74.019875       1
+-73.725235       1
+Name: pickup_longitude, Length: 34431, dtype: int64 
+
+
+pickup_latitude :
+ [40.75011063 40.72424316 40.80278778 ... 40.64077377 40.57663345
+ 40.57731628]
+pickup_latitude :
+ 40.774109    2693
+40.774078    2681
+40.774101    2655
+40.774071    2654
+40.774120    2509
+             ... 
+40.839218       1
+40.837254       1
+40.843483       1
+40.840229       1
+40.635708       1
+Name: pickup_latitude, Length: 61535, dtype: int64 
+
+
+dropoff_longitude :
+ [-73.97478485 -73.99441528 -73.95182037 ... -74.05181885 -74.36378479
+ -73.77191162]
+dropoff_longitude :
+  0.000000     21067
+-73.982224     3716
+-73.982239     3687
+-73.982330     3669
+-73.982384     3579
+              ...  
+-74.158867        1
+-74.158752        1
+-74.408554        1
+-74.158493        1
+-1.266667         1
+Name: dropoff_longitude, Length: 52243, dtype: int64 
+
+
+dropoff_latitude :
+ [40.75061798 40.7591095  40.8244133  ... 40.57627106 40.5903244
+ 40.93608093]
+dropoff_latitude :
+ 0.000000     21068
+40.750149     1899
+40.750198     1800
+40.750172     1790
+40.750221     1781
+             ...  
+40.899384        1
+40.906219        1
+40.905296        1
+40.905453        1
+40.911171        1
+Name: dropoff_latitude, Length: 86678, dtype: int64 
+
+
+total_amount :
+ [ 17.05  17.8   10.8  ... 312.66  65.72 143.45]
+total_amount :
+ 6.80      407882
+7.30      375901
+8.30      374683
+7.80      367092
+9.80      361523
+           ...  
+191.40         1
+147.66         1
+146.41         1
+61.58          1
+156.21         1
+Name: total_amount, Length: 11459, dtype: int64 
+
+
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[76]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">##Concatenate Lon and Lat into loc column</span>
@@ -13413,7 +13632,7 @@ Name: total_amount, Length: 11969, dtype: int64
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="prompt input_prompt">In&nbsp;[77]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">df2</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;taxi_data_new.csv&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
