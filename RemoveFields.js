@@ -1,11 +1,11 @@
 var MongoClient = require('mongodb').MongoClient;
 
 async function fetchDatabase() {
-    console.log('fetch database called');
+    console.log('Remove fields!');
     let client, db;
     const databaseURL = 'mongodb://127.0.0.1:27017/?gssapiServiceName=mongodb';
     const database = 'Task';
-    const collection = 'taxi_data_new';
+    const collection = 'taxi_data_new_1';
 
     try {
         client = await MongoClient.connect(databaseURL, {

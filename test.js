@@ -5,7 +5,7 @@ async function fetchDatabase() {
   let client, db;
   const databaseURL = 'mongodb://127.0.0.1:27017/?gssapiServiceName=mongodb';
   const database = 'Task';
-  const collection = 'taxi_data_new';
+  const collection = 'taxi_data_new_1';
 
   try {
     client = await MongoClient.connect(databaseURL, {
@@ -27,14 +27,22 @@ async function fetchDatabase() {
     }
 
     dbCollection.createIndex({ loc: "2dsphere" });
-    let queryResult = await dbCollection.find(geoQuery, {loc:1}).hint("loc_2dsphere").toArray();
-    console.log(queryResult.length);
+    let queryResult = await dbCollection.find(geoQuery, {loc:1}).hint("loc_2dsphere").explain();
+    console.log(queryResult.queryPlanner);
+    console.log(queryResult);
+
+
+    // console.log(queryResult.length);
     // dbCollection.dropIndexes(); 
 
 
   }
   catch (err) { console.log(err); }
-  finally { client.close(() => console.log('DB close!')); }
+  
+}
+
+async function test() {
+
 }
 
 fetchDatabase();
