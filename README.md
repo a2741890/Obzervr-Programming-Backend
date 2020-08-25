@@ -2,12 +2,13 @@
 New York City has publicly released Taxi trip data for every trip from every taxi from 2014 to 2018. The web application shows the dataset of the pick-up locations on the map in New York City during January, 2015. When zooming down to an individual point, it will be displayed as a blue circle marker. On the other hand, zooming out will show clusters representing points in the specific area.
 
 ###### Data structure in use:  
-![data structure]()  
-  
+<img src="https://github.com/a2741890/Obzervr-Programming-Backend/blob/master/dataStructure.PNG" height="240" width="480">  
+
 ###### Map:  
-![loaded]()  
-![close]()  
-![far]()  
+<img src="https://raw.githubusercontent.com/a2741890/Obzervr-Programming-Backend/master/map-middle.PNG" height="240" width="480">
+<img src="https://raw.githubusercontent.com/a2741890/Obzervr-Programming-Backend/master/map-close.PNG" height="240" width="480">
+<img src="https://raw.githubusercontent.com/a2741890/Obzervr-Programming-Backend/master/map-far.PNG" height="240" width="480">
+
   
   
 ## Technical Decision  
